@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7666d8"><meta name="description" content="پلنر شخصی فارسی با تقویم شمسی، کارها، گزارش و یادداشت">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
+<title>پلنر من</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div><div class="eyebrow">فضای شخصی تو</div><h1>پلنر من <span>✦</span></h1></div><button id="installBtn" class="install hidden">نصب برنامه ⤓</button></header>
+<main>
+<section class="welcome card"><div><div class="eyebrow">امروز، یک شروع تازه</div><h2 id="todayLabel">در حال بارگذاری تقویم…</h2><p id="todayHint">قدم‌های کوچک، نتیجه‌های بزرگ می‌سازند.</p></div><div class="sun">☀️</div></section>
+<nav class="tabs" aria-label="بخش‌ها">
+<button class="tab active" data-tab="calendar">تقویم</button><button class="tab" data-tab="tasks">کارها</button><button class="tab" data-tab="reports">گزارش‌ها</button><button class="tab" data-tab="notes">یادداشت</button><button class="tab" data-tab="settings">تنظیمات</button>
+</nav>
+<section id="calendar" class="panel active">
+<div class="section-head"><div><div class="eyebrow">برنامه‌ریزی</div><h2>تقویم شمسی</h2></div><div class="month-nav"><button id="prevMonth" aria-label="ماه قبل">›</button><strong id="monthTitle"></strong><button id="nextMonth" aria-label="ماه بعد">‹</button></div></div>
+<div class="weekdays"><span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span></div>
+<div id="calendarGrid" class="calendar-grid"></div>
+<div class="selected-date"><div><div class="eyebrow">برنامه این روز</div><h3 id="selectedTitle"></h3></div><button class="primary small" id="addTaskFromCalendar">+ افزودن کار</button></div>
+<div id="dayTasks" class="task-list"></div>
+</section>
+<section id="tasks" class="panel">
+<div class="section-head"><div><div class="eyebrow">قدم بعدی تو</div><h2>کارهای من</h2></div><span class="count" id="taskCount">۰ کار</span></div>
+<form id="taskForm" class="add-form"><input id="taskInput" placeholder="چه کاری باید انجام بدی؟" maxlength="100" required><input id="taskDate" type="date" aria-label="تاریخ کار"><button class="primary" type="submit">افزودن</button></form>
+<div class="filters"><button class="filter active" data-filter="all">همه</button><button class="filter" data-filter="open">باقی‌مانده</button><button class="filter" data-filter="done">انجام‌شده</button></div>
+<div id="allTasks" class="task-list"></div>
+</section>
+<section id="reports" class="panel">
+<div class="section-head"><div><div class="eyebrow">نگاهی به مسیرت</div><h2>گزارش عملکرد</h2></div><select id="reportPeriod"><option value="day">روزانه</option><option value="month">ماهانه</option></select></div>
+<div class="stats"><article class="stat"><span>کل کارها</span><strong id="totalStat">۰</strong></article><article class="stat"><span>انجام‌شده</span><strong id="doneStat">۰</strong></article><article class="stat"><span>درصد پیشرفت</span><strong id="percentStat">۰٪</strong></article></div>
+<div class="card progress-card"><div class="progress-head"><strong>پیشرفت تو</strong><span id="progressText">۰٪</span></div><div class="progress"><i id="progressBar"></i></div><p id="reportCaption">با انجام اولین کار، مسیر پیشرفتت شروع می‌شود.</p></div>
+</section>
+<section id="notes" class="panel">
+<div class="section-head"><div><div class="eyebrow">ایده‌ها و فکرها</div><h2>یادداشت‌های من</h2></div></div>
+<form id="noteForm" class="note-form"><input id="noteTitle" placeholder="عنوان یادداشت" maxlength="70"><textarea id="noteBody" placeholder="هر چیزی که دوست داری اینجا بنویس…" rows="4"></textarea><button class="primary" type="submit">ذخیره یادداشت</button></form>
+<div id="notesList" class="notes-list"></div>
+</section>
+<section id="settings" class="panel">
+<div class="section-head"><div><div class="eyebrow">شخصی‌سازی</div><h2>تنظیمات ظاهر</h2></div></div>
+<div class="card setting"><h3>رنگ برنامه</h3><div class="swatches"><button data-color="#7666d8" style="--swatch:#7666d8" aria-label="بنفش"></button><button data-color="#168b82" style="--swatch:#168b82" aria-label="سبزآبی"></button><button data-color="#d46d82" style="--swatch:#d46d82" aria-label="صورتی"></button><button data-color="#d18a36" style="--swatch:#d18a36" aria-label="نارنجی"></button><button data-color="#477bb5" style="--swatch:#477bb5" aria-label="آبی"></button></div>
+<h3>حالت نمایش</h3><div class="choice-row"><button class="choice active" data-theme="light">روشن</button><button class="choice" data-theme="dark">تیره</button></div>
+<h3>فونت</h3><select id="fontSelect"><option value="Tahoma">Tahoma</option><option value="Arial">Arial</option><option value="sans-serif">پیش‌فرض گوشی</option></select>
+<h3>اندازه نوشته</h3><input id="fontSize" type="range" min="14" max="19" value="16"><p class="muted">اطلاعاتت فقط در حافظه همین مرورگر ذخیره می‌شود.</p></div>
+</section>
+</main>
+<footer>با عشق برای روزهای پربارتر تو ✨</footer>
+<dialog id="taskDialog"><form method="dialog" id="quickTaskForm"><h3>کار جدید</h3><input id="quickTaskInput" placeholder="عنوان کار" required maxlength="100"><div class="dialog-actions"><button class="choice" value="cancel">انصراف</button><button class="primary" id="quickSave" value="default">ذخیره</button></div></form></dialog>
+<script src="app.js"></script>
+</body></html>
